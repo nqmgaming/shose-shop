@@ -1,5 +1,6 @@
 package com.nqmgaming.shoseshop.ui.fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,8 +13,10 @@ import com.nqmgaming.shoseshop.adapter.category.CategoryAdapter
 import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.BannerAdapter
 import com.nqmgaming.shoseshop.databinding.FragmentHomeBinding
+import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import dagger.hilt.android.AndroidEntryPoint
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -58,7 +61,13 @@ class HomeFragment : Fragment() {
                 binding.productRv.adapter = ProductAdapter().apply {
                     differ.submitList(it)
                     setOnItemClickListener {
-                        // Handle item click
+                        // Intent to ProductDetailActivity
+                        val id = it.id
+                        Intent(requireContext(), ProductDetailActivity::class.java).apply {
+                            putExtra("id", id)
+                            putExtra("token", bearerToken)
+                            startActivity(this)
+                        }
                     }
                 }
             }

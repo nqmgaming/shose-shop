@@ -2,6 +2,7 @@ package com.nqmgaming.shoseshop.data.model.product
 
 import com.google.gson.annotations.SerializedName
 import com.nqmgaming.shoseshop.data.model.category.Category
+import com.nqmgaming.shoseshop.data.model.size.Size
 
 data class Product(
     @SerializedName("_id")
@@ -14,7 +15,7 @@ data class Product(
     val name: String,
     val price: Long,
     val rating: Double,
-    val size: String,
+    val size: Size,
     val stock: Int,
     val updatedAt: String
 )
