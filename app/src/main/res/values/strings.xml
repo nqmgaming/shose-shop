@@ -14,4 +14,11 @@
     <string name="now_let_s_make_you_nnike_member">Now let\'s make you \nNike Member.</string>
     <string name="sign_up_for_emails_to_get_updates_nfrom_nike_on_products_offers_nand_your_meber_benefits">Sign up for emails to get updates\nfrom Nike on products, offers\nand your Meber benefits.</string>
     <string name="create_account">Create Account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="order">Order</string>
+    <string name="cart">Cart</string>
+    <string name="home">Home</string>
+      <string name="nike">Nike</string>
 </resources>
