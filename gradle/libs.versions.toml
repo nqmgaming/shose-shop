@@ -22,6 +22,10 @@ swiperefreshlayout = "1.1.0"
 tedpermissionCoroutine = "3.3.0"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
+#Dagger-Hilt
+hilt = "2.49"
+hilt-work = "1.1.0"
+hilt-compose = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,8 +52,15 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 tedpermission-coroutine = { module = "io.github.ParkSangGwon:tedpermission-coroutine", version.ref = "tedpermissionCoroutine" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+#Dagger-Hilt
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-compose" }
+hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hilt-work" }
+hilt-work-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-work" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 

@@ -94,5 +94,7 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer_highContrast</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh_highContrast</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest_highContrast</item>
+        <item name="colorPrimaryVariant">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
     </style>
 </resources>

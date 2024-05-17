@@ -46,5 +46,8 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
+        <item name="colorPrimaryVariant">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
+
     </style>
 </resources>

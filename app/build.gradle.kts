@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -87,4 +89,19 @@ dependencies {
 
     // Image Picker
     implementation (libs.imagepicker)
+
+    // Dot Indicator
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+
+    // Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.work)
+
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 }
