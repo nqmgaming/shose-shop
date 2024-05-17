@@ -14,7 +14,7 @@ import javax.inject.Inject
 class SplashViewModel @Inject constructor(
     private val repository: ShoesRepository
 ) : ViewModel() {
-    suspend fun checkUserExist(email: String) = repository.checkUserExist(email)
+    private suspend fun checkUserExist(email: String) = repository.checkUserExist(email)
     fun checkEmailExits(email: String, callback: (Boolean) -> Unit) {
         viewModelScope.launch {
             Log.d("SplashViewModel", "Checking server connection")

@@ -1,22 +1,19 @@
-package com.nqmgaming.shoseshop.ui.activities
+package com.nqmgaming.shoseshop.ui.activities.checkAccount
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.databinding.ActivityCheckAccountBinding
+import com.nqmgaming.shoseshop.ui.activities.signIn.SignInActivity
+import com.nqmgaming.shoseshop.ui.activities.SignUpActivity
 import com.nqmgaming.shoseshop.ui.activities.splash.SplashViewModel
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class CheckAccountActivity : AppCompatActivity() {
@@ -40,7 +37,7 @@ class CheckAccountActivity : AppCompatActivity() {
                 return@validEmail
             }
             if (email.validEmail()) {
-                checkEmailExits(email) { isExits ->
+                viewModel.checkEmailExits(email) { isExits ->
                     if (isExits) {
                         Intent(this, SignInActivity::class.java).also {
                             it.putExtra("email", email)
@@ -59,19 +56,4 @@ class CheckAccountActivity : AppCompatActivity() {
 
     }
 
-    private fun checkEmailExits(email: String, callback: (Boolean) -> Unit) {
-        lifecycleScope.launch {
-            Log.d("SplashActivity", "Checking server connection")
-            val isServerConnected = withContext(Dispatchers.IO) {
-                try {
-                    viewModel.checkUserExist(email)
-                } catch (e: Exception) {
-                    Log.e("SplashActivity", "Error checking server connection: ${e.message}")
-                    false
-                }
-            }
-            Log.d("SplashActivity", "Server connected: $isServerConnected")
-            callback(isServerConnected)
-        }
-    }
 }

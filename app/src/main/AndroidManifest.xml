@@ -18,13 +18,13 @@
             android:name=".ui.activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.SignInActivity"
+            android:name=".ui.activities.signIn.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.CheckAccountActivity"
+            android:name=".ui.activities.checkAccount.CheckAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.AuthActivity"
+            android:name=".ui.activities.auth.AuthActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.MainActivity"
