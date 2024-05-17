@@ -1,6 +1,10 @@
 package com.nqmgaming.shoseshop.data.model.signUp
 
+import com.google.gson.annotations.SerializedName
+
 data class UserSignUp(
+    @SerializedName("_id")
+    val id: String,
     val email: String,
     val password: String,
     val firstName: String,

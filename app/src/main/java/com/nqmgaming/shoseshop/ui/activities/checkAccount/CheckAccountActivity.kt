@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.databinding.ActivityCheckAccountBinding
 import com.nqmgaming.shoseshop.ui.activities.signIn.SignInActivity
-import com.nqmgaming.shoseshop.ui.activities.SignUpActivity
+import com.nqmgaming.shoseshop.ui.activities.signUp.SignUpActivity
 import com.nqmgaming.shoseshop.ui.activities.splash.SplashViewModel
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import dagger.hilt.android.AndroidEntryPoint

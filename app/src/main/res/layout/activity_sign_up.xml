@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.SignUpActivity">
+    tools:context=".ui.activities.signUp.SignUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/main"
@@ -190,12 +190,12 @@
                 android:id="@+id/date_et"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="false"
                 android:drawableStart="@drawable/ic_calendar"
                 android:drawablePadding="16dp"
-                android:editable="false"
-                android:enabled="true"
+                android:focusable="false"
                 android:hint="Date of Birth"
-                android:inputType="datetime"
+                android:inputType="date"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
 

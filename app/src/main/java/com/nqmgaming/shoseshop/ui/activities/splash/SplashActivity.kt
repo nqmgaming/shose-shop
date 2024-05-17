@@ -46,6 +46,7 @@ class SplashActivity : AppCompatActivity() {
                     .setStyle(Styles.FAILED)
                     .setHeading("Uh-Oh")
                     .setDescription("Unexpected error occurred. Try again later.")
+                    .setDismissButtonText("Exit")
                     .setCancelable(false)
                     .showDialog(object : OnDialogButtonClickListener() {
                         override fun onDismissClicked(dialog: Dialog) {
