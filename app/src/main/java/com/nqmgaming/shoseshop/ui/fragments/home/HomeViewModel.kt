@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nqmgaming.shoseshop.data.model.category.Category
 import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
+import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.data.repository.ShoesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ class HomeViewModel @Inject constructor(
 
     private suspend fun getCategoryById(token: String, id: String) =
         repository.getCategoryById(token, id)
+    private suspend fun getProducts(token: String) = repository.getProducts(token)
 
     fun getCategoriesHome(token: String, callback: (List<Category>?) -> Unit) {
         viewModelScope.launch {
@@ -28,6 +30,18 @@ class HomeViewModel @Inject constructor(
                 callback(categories)
             } catch (e: Exception) {
                 Log.e("HomeViewModel", "Error getting categories: ${e.message}")
+                callback(null)
+            }
+        }
+    }
+
+    fun getProductsHome(token: String, callback: (List<Product>?) -> Unit) {
+        viewModelScope.launch {
+            try {
+                val products = getProducts(token)
+                callback(products)
+            } catch (e: Exception) {
+                Log.e("HomeViewModel", "Error getting products: ${e.message}")
                 callback(null)
             }
         }

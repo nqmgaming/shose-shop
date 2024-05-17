@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.category.CategoryAdapter
+import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.BannerAdapter
 import com.nqmgaming.shoseshop.databinding.FragmentHomeBinding
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
@@ -35,6 +37,7 @@ class HomeFragment : Fragment() {
             )
         )
         binding.indicator.setViewPager2(binding.bannerViewpager)
+        binding.productRv.layoutManager = (GridLayoutManager(requireContext(), 2))
 
         val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
         val bearerToken = "Bearer $token"
@@ -47,6 +50,16 @@ class HomeFragment : Fragment() {
                     }
                     isDataLoaded = true
                     notifyItemChanged(selectedPosition)
+                }
+            }
+        }
+        viewModel.getProductsHome(bearerToken) {
+            if (it != null) {
+                binding.productRv.adapter = ProductAdapter().apply {
+                    differ.submitList(it)
+                    setOnItemClickListener {
+                        // Handle item click
+                    }
                 }
             }
         }
