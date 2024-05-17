@@ -21,4 +21,5 @@
     <string name="cart">Cart</string>
     <string name="home">Home</string>
       <string name="nike">Nike</string>
+    <string name="search">Search shoes?</string>
 </resources>
