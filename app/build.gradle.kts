@@ -30,6 +30,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures{
+        viewBinding = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -45,4 +50,39 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation (libs.easyvalidation.core)
+
+    // Shows Toasts by default for every validation error
+    implementation (libs.easyvalidation.toast)
+
+    // Gson
+    implementation(libs.gson)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation (libs.logging.interceptor)
+
+    // Jwt Decoder
+    implementation (libs.jwtdecode)
+
+    // Glide
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
+    // SwipeRefreshLayout
+    implementation(libs.androidx.swiperefreshlayout)
+
+    //popup dialog
+    implementation (libs.popup.dialog)
+
+    // Avatar Image View
+    implementation(libs.avvylib)
+
+    // Ted Permission
+    implementation(libs.tedpermission.coroutine)
+
+    // Image Picker
+    implementation (libs.imagepicker)
 }
