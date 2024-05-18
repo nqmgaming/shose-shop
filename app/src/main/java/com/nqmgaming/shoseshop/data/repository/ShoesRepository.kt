@@ -15,12 +15,12 @@ class ShoesRepository @Inject constructor(
     suspend fun getCategories(token: String): CategoryResponse = shoesApi.getCategories(token)
     suspend fun getCategoryById(token: String, id: String): CategoryResponse =
         shoesApi.getCategoryById(token, id)
-
     suspend fun getProducts(token: String) = shoesApi.getProducts(token)
     suspend fun getProductById(token: String, id: String) = shoesApi.getProductById(token, id)
     suspend fun searchProductByName(token: String, name: String) =
         shoesApi.searchProductByName(token, name)
-
+    suspend fun getProductsByCategory(token: String, categoryId: String) =
+        shoesApi.getProductsByCategoryId(token, categoryId)
     suspend fun updateProductStock(token: String, id: String, stock: Int) =
         shoesApi.updateProductStock(token, id, stock)
 }

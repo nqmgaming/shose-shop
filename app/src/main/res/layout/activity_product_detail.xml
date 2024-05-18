@@ -19,9 +19,12 @@
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:alpha="0.6"
             android:background="@drawable/white_button"
             android:padding="10dp"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/product_name_tv"
@@ -29,7 +32,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:text="Product Name"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorDarkGrey"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -77,7 +80,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp">
 
                 <TextView
                     android:id="@+id/product_price_tv"
@@ -97,6 +101,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_detail_background"
+                    android:padding="12dp"
                     android:src="@drawable/ic_share"
                     app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
                     app:layout_constraintEnd_toStartOf="@+id/heart_iv"
@@ -107,6 +113,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
+                    android:background="@drawable/button_detail_background"
+                    android:padding="12dp"
                     android:src="@drawable/ic_heart"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -154,6 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
+                        android:layout_marginEnd="5dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
                         android:text="Stock: 15"
@@ -200,24 +209,93 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/add_to_favorite_btn"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="2dp"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/white_button"
-                android:drawableEnd="@drawable/ic_heart_border"
-                android:paddingHorizontal="16dp"
-                android:tag="empty"
-                android:text="Favorite"
-                android:textAllCaps="false"
-                android:textColor="@color/colorBlack"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/add_to_bag_btn" />
+                android:layout_marginVertical="20dp"
+                android:background="#c0c0c0" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:id="@+id/reviews_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rating"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.willy.ratingbar.ScaleRatingBar
+                    android:id="@+id/rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reviews_tv"
+                    app:srb_clearRatingEnabled="true"
+                    app:srb_clickable="true"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_filled"
+                    app:srb_isIndicator="true"
+                    app:srb_minimumStars="1"
+                    app:srb_numStars="5"
+                    app:srb_rating="4"
+                    app:srb_starHeight="30dp"
+                    app:srb_starPadding="15dp"
+                    app:srb_starWidth="30dp"
+                    app:srb_stepSize="1">
+
+                    <TextView
+                        android:id="@+id/rating_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="4.9"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </com.willy.ratingbar.ScaleRatingBar>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="20dp"
+                android:background="#c0c0c0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="60dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="You may also like"
+                    android:textColor="@color/static_black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/related_products_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_product" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

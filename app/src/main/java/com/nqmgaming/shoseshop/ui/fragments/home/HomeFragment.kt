@@ -66,6 +66,7 @@ class HomeFragment : Fragment() {
                         Intent(requireContext(), ProductDetailActivity::class.java).apply {
                             putExtra("id", id)
                             putExtra("token", bearerToken)
+                            putExtra("categoryId", it.category.id)
                             startActivity(this)
                         }
                     }

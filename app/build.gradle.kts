@@ -104,4 +104,7 @@ dependencies {
     implementation(libs.hilt.work)
 
     implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    // Rating bar
+    implementation("com.github.ome450901:SimpleRatingBar:1.5.1")
 }

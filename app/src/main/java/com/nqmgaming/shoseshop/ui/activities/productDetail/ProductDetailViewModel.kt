@@ -16,6 +16,9 @@ class ProductDetailViewModel @Inject constructor(
     private suspend fun getProductDetail(token: String, id: String) =
         repository.getProductById(token, id)
 
+    private suspend fun getProductsByCategory(token: String, categoryId: String) =
+        repository.getProductsByCategory(token, categoryId)
+
     fun getProductDetail(token: String, id: String, callback: (Product?) -> Unit) {
         viewModelScope.launch {
             try {
@@ -23,6 +26,22 @@ class ProductDetailViewModel @Inject constructor(
                 callback(productDetail)
             } catch (e: Exception) {
                 Log.e("ProductDetailViewModel", "Error getting product detail: ${e.message}")
+                callback(null)
+            }
+        }
+    }
+
+    fun getProductsByCategory(
+        token: String,
+        categoryId: String,
+        callback: (List<Product>?) -> Unit
+    ) {
+        viewModelScope.launch {
+            try {
+                val products = getProductsByCategory(token, categoryId)
+                callback(products)
+            } catch (e: Exception) {
+                Log.e("ProductDetailViewModel", "Error getting products by category: ${e.message}")
                 callback(null)
             }
         }

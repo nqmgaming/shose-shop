@@ -71,6 +71,13 @@ interface ShoesApi {
         @Query("name") name: String
     ): List<Product>
 
+    // GET request to get products by category id
+    @GET("/products/category/{categoryId}")
+    suspend fun getProductsByCategoryId(
+        @Header("Authorization") token: String,
+        @Path("categoryId") categoryId: String
+    ): List<Product>
+
     // PATCH request to update product stock
     @PATCH("/products/{id}")
     suspend fun updateProductStock(
