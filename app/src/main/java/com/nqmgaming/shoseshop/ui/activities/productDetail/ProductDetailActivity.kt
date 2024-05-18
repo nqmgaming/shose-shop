@@ -9,14 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.maxkeppeler.sheets.input.InputSheet
-import com.maxkeppeler.sheets.input.type.InputCheckBox
-import com.maxkeppeler.sheets.input.type.InputEditText
 import com.maxkeppeler.sheets.input.type.InputRadioButtons
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.ImageProductAdapter
 import com.nqmgaming.shoseshop.data.model.cart.CartRequest
-import com.nqmgaming.shoseshop.data.model.cart.ItemCart
 import com.nqmgaming.shoseshop.data.model.cart.ItemCartRequest
 import com.nqmgaming.shoseshop.data.model.size.Size
 import com.nqmgaming.shoseshop.data.model.size.SizeDetail
@@ -130,11 +127,11 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
 
-        viewModel.getProductDetail(token, id) {
+        viewModel.getProductDetail(token, id) { it ->
             if (it != null) {
                 binding.apply {
                     productNameTv.text = it.name
-                    productPriceTv.text = it.price.toString()
+                    productPriceTv.text = "$ ${it.price}"
                     productCategoryTv.text = it.category.name
                     productDsTv.text = it.description
                     productNameMainTv.text = it.name
