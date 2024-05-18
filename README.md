@@ -6,7 +6,7 @@ Shoes Shop là một ứng dụng mua sắm giày trực tuyến được xây d
 ![GitHub issues](https://img.shields.io/github/issues/nqmgaming/shoes-shop)
 ![GitHub license](https://img.shields.io/github/license/nqmgaming/shoes-shop)
 
-![App Screenshot]<img src="./preview/home.png" width="200" height="400" /> <img src="./preview/detail.png" width="200" height="400" /> <img src="./preview/cart.png" width="200" height="400" /> <img src="./preview/order.png" width="200" height="400" />
+![App Screenshot]<img src="./preview/home.png" width="200" height="400" /> <img src="./preview/detail.png" width="200" height="400" /> <img src="./preview/cart.png" width="200" height="400" /> <img src="./preview/home-list.png" width="200" height="400" /><img src="./preview/detail-more.png" width="200" height="400" />
 
 ## Tính năng
 
