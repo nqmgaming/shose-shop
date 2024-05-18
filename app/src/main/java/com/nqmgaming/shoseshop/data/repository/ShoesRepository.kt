@@ -1,5 +1,6 @@
 package com.nqmgaming.shoseshop.data.repository
 
+import com.nqmgaming.shoseshop.data.model.cart.CartRequest
 import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
 import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
 import com.nqmgaming.shoseshop.data.model.signUp.SignUpRequest
@@ -15,12 +16,21 @@ class ShoesRepository @Inject constructor(
     suspend fun getCategories(token: String): CategoryResponse = shoesApi.getCategories(token)
     suspend fun getCategoryById(token: String, id: String): CategoryResponse =
         shoesApi.getCategoryById(token, id)
+
     suspend fun getProducts(token: String) = shoesApi.getProducts(token)
     suspend fun getProductById(token: String, id: String) = shoesApi.getProductById(token, id)
     suspend fun searchProductByName(token: String, name: String) =
         shoesApi.searchProductByName(token, name)
+
     suspend fun getProductsByCategory(token: String, categoryId: String) =
         shoesApi.getProductsByCategoryId(token, categoryId)
+
     suspend fun updateProductStock(token: String, id: String, stock: Int) =
         shoesApi.updateProductStock(token, id, stock)
+
+    suspend fun getAllCarts(token: String, userId: String) =
+        shoesApi.getCartItemsByUserId(token, userId)
+
+    suspend fun createCart(token: String, cartRequest: CartRequest) =
+        shoesApi.addProductToCart(token, cartRequest)
 }

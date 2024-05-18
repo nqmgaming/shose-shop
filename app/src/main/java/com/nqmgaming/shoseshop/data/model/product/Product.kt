@@ -13,7 +13,7 @@ data class Product(
     val imagePreview: String,
     val images: List<String>,
     val name: String,
-    val price: Long,
+    val price: Double,
     val rating: Double,
     val size: Size,
     val stock: Int,

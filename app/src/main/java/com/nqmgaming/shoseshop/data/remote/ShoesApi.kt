@@ -1,5 +1,7 @@
 package com.nqmgaming.shoseshop.data.remote
 
+import com.nqmgaming.shoseshop.data.model.cart.Cart
+import com.nqmgaming.shoseshop.data.model.cart.CartRequest
 import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
 import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
@@ -85,4 +87,22 @@ interface ShoesApi {
         @Path("id") id: String,
         @Body stock: Int
     ): Product
+
+    /***
+     * This part is for cart
+     */
+
+    // GET request to get all cart items by user id
+    @GET("/carts/user/{id}")
+    suspend fun getCartItemsByUserId(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): List<Cart>
+
+    // POST request to add product to cart
+    @POST("/carts")
+    suspend fun addProductToCart(
+        @Header("Authorization") token: String,
+        @Body cart: CartRequest
+    ): Cart
 }
