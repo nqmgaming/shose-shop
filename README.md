@@ -22,10 +22,12 @@ Shoes Shop là một ứng dụng mua sắm giày trực tuyến được xây d
 
 ## Công nghệ sử dụng
 
-- Ngôn ngữ: Kotlin, Java
+- Ngôn ngữ: Kotlin
 - Framework: Android SDK
 - Thư viện: Retrofit, Glide
+## Backend API
 
+Ứng dụng này sử dụng API được xây dựng bằng React.js và Mongoose DB. Mã nguồn của API có thể được tìm thấy tại [đây](https://github.com/nqmgaming/shoes-shop-api).
 ## Tác giả
 
 - [nqmgaming](https://github.com/nqmgaming)
