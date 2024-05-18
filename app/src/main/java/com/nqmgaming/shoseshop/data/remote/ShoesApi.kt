@@ -2,6 +2,7 @@ package com.nqmgaming.shoseshop.data.remote
 
 import com.nqmgaming.shoseshop.data.model.cart.Cart
 import com.nqmgaming.shoseshop.data.model.cart.CartRequest
+import com.nqmgaming.shoseshop.data.model.cart.CartResponse
 import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
 import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
@@ -9,6 +10,7 @@ import com.nqmgaming.shoseshop.data.model.signIn.SignInResponse
 import com.nqmgaming.shoseshop.data.model.signUp.SignUpRequest
 import com.nqmgaming.shoseshop.data.model.signUp.SignUpResponse
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.PATCH
@@ -97,7 +99,7 @@ interface ShoesApi {
     suspend fun getCartItemsByUserId(
         @Header("Authorization") token: String,
         @Path("id") id: String
-    ): List<Cart>
+    ): CartResponse
 
     // POST request to add product to cart
     @POST("/carts")
@@ -105,4 +107,19 @@ interface ShoesApi {
         @Header("Authorization") token: String,
         @Body cart: CartRequest
     ): Cart
+
+    // PATCH request to update cart item quantity
+    @PATCH("/carts/{id}")
+    suspend fun updateCartItemQuantity(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body quantity: Map<String, Int>
+    ): Cart
+
+    // DELETE request to delete cart item
+    @DELETE("/carts/{id}")
+    suspend fun deleteCartItem(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    )
 }

@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.nqmgaming.shoseshop.ui.fragments.CartFragment"
+        android:name="com.nqmgaming.shoseshop.ui.fragments.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart">
         <action

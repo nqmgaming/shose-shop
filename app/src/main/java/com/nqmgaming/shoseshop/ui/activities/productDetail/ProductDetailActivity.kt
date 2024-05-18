@@ -17,6 +17,7 @@ import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.ImageProductAdapter
 import com.nqmgaming.shoseshop.data.model.cart.CartRequest
 import com.nqmgaming.shoseshop.data.model.cart.ItemCart
+import com.nqmgaming.shoseshop.data.model.cart.ItemCartRequest
 import com.nqmgaming.shoseshop.data.model.size.Size
 import com.nqmgaming.shoseshop.data.model.size.SizeDetail
 import com.nqmgaming.shoseshop.databinding.ActivityProductDetailBinding
@@ -35,6 +36,7 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var sizeSelect: SizeDetail
     private lateinit var userId: String
     private var price by Delegates.notNull<Double>()
+    private lateinit var productImage: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -72,11 +74,11 @@ class ProductDetailActivity : AppCompatActivity() {
 
             addToBagBtn.setOnClickListener {
                 if (::sizeSelect.isInitialized) {
-                    val items = ItemCart(
+                    val items = ItemCartRequest(
                         product = id,
                         size = sizeSelect.name,
                         quantity = 1,
-                        price = price
+                        price = price,
                     )
                     val cartRequest = CartRequest(
                         user = userId,
@@ -144,6 +146,7 @@ class ProductDetailActivity : AppCompatActivity() {
                     size = it.size
                     selectSizeBtn.text = "Size ${size.name} ${size.size[0].name}"
                     price = it.price
+                    productImage = it.imagePreview
                 }
 
             }
