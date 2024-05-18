@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ksps)
     alias(libs.plugins.hilt)
 }
 
@@ -91,11 +91,11 @@ dependencies {
     implementation (libs.imagepicker)
 
     // Dot Indicator
-    implementation("com.tbuonomo:dotsindicator:5.0")
+    implementation(libs.dotsindicator)
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 
     // Hilt
     implementation(libs.hilt.android)
@@ -103,8 +103,11 @@ dependencies {
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.work)
 
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation(libs.androidx.work.runtime.ktx)
 
     // Rating bar
-    implementation("com.github.ome450901:SimpleRatingBar:1.5.1")
+    implementation(libs.simpleratingbar)
+
+    // Bottom sheet
+    implementation(libs.input)
 }

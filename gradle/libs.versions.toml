@@ -1,10 +1,12 @@
 [versions]
 agp = "8.4.0"
 avvylib = "1.2.0"
+dotsindicator = "5.0"
 evVersion = "1.0.4"
 glide = "4.16.0"
 gson = "2.10.1"
 imagepickerVersion = "2.1"
+input = "2.3.1"
 jwtdecode = "2.0.2"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -12,43 +14,53 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
+kotlinxCoroutinesAndroid = "1.8.0"
 loggingInterceptor = "4.12.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
 popupDialog = "1.0.5"
 retrofit = "2.11.0"
+simpleratingbar = "1.5.1"
 swiperefreshlayout = "1.1.0"
 tedpermissionCoroutine = "3.3.0"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
+ksp = "1.9.0-1.0.13"
 #Dagger-Hilt
-hilt = "2.49"
-hilt-work = "1.1.0"
-hilt-compose = "1.1.0"
+hilt = "2.51.1"
+hilt-work = "1.2.0"
+hilt-compose = "1.2.0"
+workRuntimeKtx = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
+androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
 avvylib = { module = "xyz.schwaab:avvylib", version.ref = "avvylib" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
 easyvalidation-core = { module = "com.wajahatkarim:easyvalidation-core", version.ref = "evVersion" }
 easyvalidation-toast = { module = "com.wajahatkarim:easyvalidation-toast", version.ref = "evVersion" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 imagepicker = { module = "com.github.dhaval2404:imagepicker", version.ref = "imagepickerVersion" }
+input = { module = "com.maxkeppeler.sheets:input", version.ref = "input" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 jwtdecode = { module = "com.auth0.android:jwtdecode", version.ref = "jwtdecode" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesAndroid" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 popup-dialog = { module = "com.saadahmedev.popup-dialog:popup-dialog", version.ref = "popupDialog" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+simpleratingbar = { module = "com.github.ome450901:SimpleRatingBar", version.ref = "simpleratingbar" }
 tedpermission-coroutine = { module = "io.github.ParkSangGwon:tedpermission-coroutine", version.ref = "tedpermissionCoroutine" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
@@ -63,4 +75,5 @@ hilt-work-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksps = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
