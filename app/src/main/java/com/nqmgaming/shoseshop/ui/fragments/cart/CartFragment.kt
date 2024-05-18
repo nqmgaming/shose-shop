@@ -1,5 +1,6 @@
 package com.nqmgaming.shoseshop.ui.fragments.cart
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.cart.CartAdapter
+import com.nqmgaming.shoseshop.data.model.cart.Cart
 import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.databinding.FragmentCartBinding
+import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +22,7 @@ class CartFragment : Fragment() {
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<CartViewModel>()
+    private lateinit var categoryId: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,73 +41,61 @@ class CartFragment : Fragment() {
             if (carts != null) {
                 binding.cartRv.adapter = CartAdapter(viewModel, bearerToken).apply {
                     differ.submitList(carts)
-                    setOnItemClickListener {
-                        // Handle item click
-                    }
-                    setOnMinusClickListener { cart ->
-                        viewModel.updateQuantityMain(
-                            bearerToken,
-                            cart.id,
-                            mapOf("quantity" to cart.items.quantity - 1)
-                        ) { cart ->
-                            if (cart != null) {
-                                viewModel.getAllCartsMain(bearerToken, userId) {
-                                    if (it != null) {
-                                        differ.submitList(it)
-                                        binding.totalPriceTv.text =
-                                            it.sumByDouble { cart -> cart.items.price * cart.items.quantity }
-                                                .toString()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    setOnPlusClickListener { cart ->
-                        viewModel.updateQuantityMain(
-                            bearerToken,
-                            cart.id,
-                            mapOf("quantity" to cart.items.quantity + 1)
-                        ) { cart ->
-                            if (cart != null) {
-                                viewModel.getAllCartsMain(bearerToken, userId) {
-                                    if (it != null) {
-                                        differ.submitList(it)
-                                        binding.totalPriceTv.text =
-                                            it.sumByDouble { cart -> cart.items.price * cart.items.quantity }
-                                                .toString()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    setOnDeleteListener { cart ->
-                        viewModel.deleteCartMain(bearerToken, cart.id) {
-                            viewModel.getAllCartsMain(bearerToken, userId) {
-                                if (it != null) {
-                                    differ.submitList(it)
-                                    binding.totalPriceTv.text =
-                                        it.sumByDouble { cart -> cart.items.price * cart.items.quantity }
-                                            .toString()
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Item deleted successfully",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-                        }
-                    }
+                    setOnItemClickListener { handleItemClick(it, bearerToken) }
+                    setOnMinusClickListener { handleQuantityChange(it, bearerToken, userId, -1) }
+                    setOnPlusClickListener { handleQuantityChange(it, bearerToken, userId, 1) }
+                    setOnDeleteListener { handleItemDeletion(it, bearerToken, userId) }
                 }
-
-                binding.llCartEmpty.visibility =
-                    if (carts.isEmpty()) View.VISIBLE else View.GONE
-                binding.cartRv.visibility = if (carts.isEmpty()) View.GONE else View.VISIBLE
-                binding.totalPriceTv.text =
-                    carts.sumByDouble { cart -> cart.items.price * cart.items.quantity }
-                        .toString()
-
+                updateUI(carts)
             }
         }
+
+    }
+
+    private fun handleItemClick(cart: Cart, bearerToken: String) {
+        Intent(requireContext(), ProductDetailActivity::class.java).apply {
+            putExtra("id", cart.items.product)
+            putExtra("token", bearerToken)
+            startActivity(this)
+        }
+    }
+
+    private fun handleQuantityChange(cart: Cart, bearerToken: String, userId: String, change: Int) {
+        viewModel.updateQuantityMain(
+            bearerToken,
+            cart.id,
+            mapOf("quantity" to cart.items.quantity + change)
+        ) { updatedCart ->
+            if (updatedCart != null) {
+                refreshCartList(bearerToken, userId)
+            }
+        }
+    }
+
+    private fun handleItemDeletion(cart: Cart, bearerToken: String, userId: String) {
+        viewModel.deleteCartMain(bearerToken, cart.id) {
+            refreshCartList(bearerToken, userId)
+            Toast.makeText(
+                requireContext(),
+                "Item deleted successfully",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun refreshCartList(bearerToken: String, userId: String) {
+        viewModel.getAllCartsMain(bearerToken, userId) { updatedCarts ->
+            (binding.cartRv.adapter as CartAdapter).differ.submitList(updatedCarts)
+            updateUI(updatedCarts ?: emptyList())
+        }
+    }
+
+    private fun updateUI(carts: List<Cart>) {
+        val isEmpty = carts.isEmpty()
+        binding.llCartEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        binding.cartRv.visibility = if (isEmpty) View.GONE else View.VISIBLE
+        binding.totalPriceTv.text =
+            "$: ${carts.sumOf { cart -> cart.items.price * cart.items.quantity }}"
     }
 
     override fun onDestroy() {

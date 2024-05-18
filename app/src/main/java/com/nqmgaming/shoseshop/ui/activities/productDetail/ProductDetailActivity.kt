@@ -37,6 +37,7 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var userId: String
     private var price by Delegates.notNull<Double>()
     private lateinit var productImage: String
+    private lateinit var categoryId: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -52,7 +53,6 @@ class ProductDetailActivity : AppCompatActivity() {
         }
         val id = intent.getStringExtra("id") ?: ""
         val token = intent.getStringExtra("token") ?: ""
-        val categoryId = intent.getStringExtra("categoryId") ?: ""
         userId = SharedPrefUtils.getString(this, "id", "") ?: ""
         binding.apply {
 
@@ -147,29 +147,30 @@ class ProductDetailActivity : AppCompatActivity() {
                     selectSizeBtn.text = "Size ${size.name} ${size.size[0].name}"
                     price = it.price
                     productImage = it.imagePreview
+                    categoryId = it.category.id
                 }
-
-            }
-        }
-
-        viewModel.getProductsByCategory(token, categoryId) {
-            if (it != null) {
-                binding.relatedProductsRv.adapter = ProductAdapter().apply {
-                    differ.submitList(it)
-                    setOnItemClickListener {
-                        Intent(
-                            this@ProductDetailActivity,
-                            ProductDetailActivity::class.java
-                        ).apply {
-                            putExtra("id", it.id)
-                            putExtra("token", token)
-                            putExtra("categoryId", it.category.id)
-                            startActivity(this)
+                viewModel.getProductsByCategory(token, categoryId) {
+                    if (it != null) {
+                        binding.relatedProductsRv.adapter = ProductAdapter().apply {
+                            differ.submitList(it)
+                            setOnItemClickListener {
+                                Intent(
+                                    this@ProductDetailActivity,
+                                    ProductDetailActivity::class.java
+                                ).apply {
+                                    putExtra("id", it.id)
+                                    putExtra("token", token)
+                                    putExtra("categoryId", it.category.id)
+                                    startActivity(this)
+                                }
+                            }
                         }
                     }
                 }
+
             }
         }
+
 
     }
 }
