@@ -48,10 +48,8 @@ class SignInActivity : AppCompatActivity() {
                 viewModel.signInUser(email!!, password) { response ->
                     if (response != null) {
                         // navigate to main activity
-                        Log.d("SignInActivity", "User signed in successfully")
                         SharedPrefUtils.saveString(this, "id", response.data.id)
                         SharedPrefUtils.saveString(this, "email", response.data.email)
-                        SharedPrefUtils.saveString(this, "avatar", response.data.avatar)
                         SharedPrefUtils.saveString(this, "firstName", response.data.firstName)
                         SharedPrefUtils.saveString(this, "lastName", response.data.lastName)
                         SharedPrefUtils.saveString(this, "birthDate", response.data.birthDate)
@@ -65,6 +63,7 @@ class SignInActivity : AppCompatActivity() {
                             .setHeading("Sign in success!")
                             .setDescription("Welcome back to shoesshop")
                             .setCancelable(false)
+                            .setDismissButtonText("OK")
                             .showDialog(object : OnDialogButtonClickListener() {
                                 override fun onDismissClicked(dialog: Dialog) {
                                     super.onDismissClicked(dialog)

@@ -89,7 +89,7 @@ class SignUpActivity : AppCompatActivity() {
             }.addSuccessCallback {
                 binding.passwordEt.error = null
             }.check()
-            address.validator().nonEmpty().addErrorCallback {
+            address.validator().nonEmpty().minLength(10).addErrorCallback {
                 binding.addressEt.error = it
                 binding.addressEt.requestFocus()
                 error = true

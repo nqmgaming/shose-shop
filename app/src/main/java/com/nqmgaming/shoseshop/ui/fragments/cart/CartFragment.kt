@@ -13,6 +13,7 @@ import com.nqmgaming.shoseshop.adapter.cart.CartAdapter
 import com.nqmgaming.shoseshop.data.model.cart.Cart
 import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.databinding.FragmentCartBinding
+import com.nqmgaming.shoseshop.ui.activities.checkout.CheckoutActivity
 import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,12 @@ class CartFragment : Fragment() {
         val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
         val bearerToken = "Bearer $token"
         val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
+
+        binding.paymentBtn.setOnClickListener {
+            Intent(requireContext(), CheckoutActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
 
         viewModel.getAllCartsMain(bearerToken, userId) { carts ->
             if (carts != null) {

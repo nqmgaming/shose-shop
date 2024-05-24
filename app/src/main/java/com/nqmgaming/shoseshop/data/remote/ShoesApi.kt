@@ -122,4 +122,8 @@ interface ShoesApi {
         @Header("Authorization") token: String,
         @Path("id") id: String
     )
+
+    /**
+     * This part is for order
+     */
 }
