@@ -60,8 +60,11 @@ class SignUpActivity : AppCompatActivity() {
             val address = binding.addressEt.text.toString().trim()
             val phoneNumber = binding.phoneEt.text.toString().trim()
             val birthDateInput = binding.dateEt.text.toString().trim()
-            val birthDate =
+            val birthDate = if (birthDateInput.isNotEmpty()) {
                 SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(birthDateInput)
+            } else {
+                null
+            }
             val formattedBirthDate = birthDate?.let { it1 ->
                 SimpleDateFormat(
                     "yyyy-MM-dd",
