@@ -17,6 +17,7 @@ import com.nqmgaming.shoseshop.adapter.viewpagger2.BannerAdapter
 import com.nqmgaming.shoseshop.data.model.category.Category
 import com.nqmgaming.shoseshop.databinding.FragmentHomeBinding
 import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
+import com.nqmgaming.shoseshop.ui.activities.search.SearchActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,8 +47,17 @@ class HomeFragment : Fragment() {
         binding.indicator.setViewPager2(binding.bannerViewpager)
         binding.productRv.layoutManager = (GridLayoutManager(requireContext(), 2))
 
+
         val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
         val bearerToken = "Bearer $token"
+
+        binding.searchBar.setOnClickListener {
+            Intent(requireContext(), SearchActivity::class.java).also {
+                it.putExtra("token", bearerToken)
+                startActivity(it)
+            }
+        }
+
         viewModel.getCategoriesHome(bearerToken) { categories ->
             if (categories != null) {
                 binding.categoryRv.adapter = CategoryAdapter().apply {
