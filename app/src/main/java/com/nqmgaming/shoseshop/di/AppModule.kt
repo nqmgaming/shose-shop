@@ -20,7 +20,7 @@ object AppModule {
     @Singleton
     fun provideShoesApi(): ShoesApi {
         return Retrofit.Builder()
-            .baseUrl("https://shoes-shop-api-unl0.onrender.com/")
+            .baseUrl("http://192.168.0.197:5555/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(
                 OkHttpClient.Builder()

@@ -37,7 +37,6 @@ class CartAdapter(private val viewModel: CartViewModel, private val token: Strin
             binding.apply {
                 minusBtn.setOnClickListener {
                     if (cart.items.quantity > 1) {
-                        cart.items.quantity -= 1
                         binding.quantityTv.text = cart.items.quantity.toString()
                         onMinusClickListener?.let { it(cart) }
                     } else {
@@ -48,7 +47,6 @@ class CartAdapter(private val viewModel: CartViewModel, private val token: Strin
                 }
                 addBtn.setOnClickListener {
                     if (cart.items.quantity < productStock) {
-                        cart.items.quantity += 1
                         binding.quantityTv.text = cart.items.quantity.toString()
                         onPlusClickListener?.let { it(cart) }
                     } else {
