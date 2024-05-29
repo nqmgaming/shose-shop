@@ -3,6 +3,7 @@ package com.nqmgaming.shoseshop.data.repository
 import com.nqmgaming.shoseshop.data.model.cart.CartRequest
 import com.nqmgaming.shoseshop.data.model.cart.CartResponse
 import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
+import com.nqmgaming.shoseshop.data.model.order.Order
 import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
 import com.nqmgaming.shoseshop.data.model.signUp.SignUpRequest
 import com.nqmgaming.shoseshop.data.remote.ShoesApi
@@ -40,4 +41,11 @@ class ShoesRepository @Inject constructor(
         shoesApi.updateCartItemQuantity(token, id, map)
 
     suspend fun deleteCart(token: String, id: String) = shoesApi.deleteCartItem(token, id)
+
+    suspend fun deleteAllCart(token: String, userId: String) =
+        shoesApi.deleteAllCartItemsByUserId(token, userId)
+
+    suspend fun createOrder(token: String, order: Order) = shoesApi.createOrder(token, order)
+
+    suspend fun getOrders(token: String, userId: String) = shoesApi.getOrdersByUserId(token, userId)
 }

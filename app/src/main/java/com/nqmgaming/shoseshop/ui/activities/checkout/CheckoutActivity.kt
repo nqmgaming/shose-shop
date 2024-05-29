@@ -1,5 +1,6 @@
 package com.nqmgaming.shoseshop.ui.activities.checkout
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
@@ -13,14 +14,13 @@ import com.maxkeppeler.sheets.input.ValidationResult
 import com.maxkeppeler.sheets.input.type.InputEditText
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.databinding.ActivityCheckoutBinding
+import com.nqmgaming.shoseshop.ui.activities.order.OrderActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class CheckoutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCheckoutBinding
-    private val viewModel: CheckoutViewModel by viewModels()
     private lateinit var email: String
     private lateinit var phoneNumber: String
     private lateinit var address: String
@@ -40,6 +40,7 @@ class CheckoutActivity : AppCompatActivity() {
         address = SharedPrefUtils.getString(this, "address") ?: ""
         val total = intent.getStringExtra("total") ?: ""
         val shippingFee = total.toDouble() * 0.1
+        val token = intent.getStringExtra("token")
         binding.tvShippingFeeValue.text = "$ $shippingFee"
         binding.tvTotalQuantityValue.text = "$ $total"
         binding.tvTotalValue.text = "$ ${total.toDouble() + shippingFee}"
@@ -157,6 +158,17 @@ class CheckoutActivity : AppCompatActivity() {
                             phoneTv.text = phoneNumber
                         }
                     })
+                }
+            }
+            btnCheckout.setOnClickListener {
+                val totalIntent = total.toDouble() + shippingFee
+                Intent(this@CheckoutActivity, OrderActivity::class.java).also {
+                    it.putExtra("total", totalIntent.toString())
+                    it.putExtra("email", email)
+                    it.putExtra("phoneNumber", phoneNumber)
+                    it.putExtra("address", address)
+                    it.putExtra("token", token)
+                    startActivity(it)
                 }
             }
         }

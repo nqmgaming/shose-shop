@@ -4,6 +4,7 @@ import com.nqmgaming.shoseshop.data.model.cart.Cart
 import com.nqmgaming.shoseshop.data.model.cart.CartRequest
 import com.nqmgaming.shoseshop.data.model.cart.CartResponse
 import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
+import com.nqmgaming.shoseshop.data.model.order.Order
 import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
 import com.nqmgaming.shoseshop.data.model.signIn.SignInResponse
@@ -123,7 +124,43 @@ interface ShoesApi {
         @Path("id") id: String
     )
 
+    // DELETE request to delete all cart items by user id
+    @DELETE("/carts/user/{userId}")
+    suspend fun deleteAllCartItemsByUserId(
+        @Header("Authorization") token: String,
+        @Path("userId") id: String
+    )
+
     /**
      * This part is for order
      */
+
+    // GET request to get all orders by user id
+    @GET("/orders/user/{userId}")
+    suspend fun getOrdersByUserId(
+        @Header("Authorization") token: String,
+        @Path("userId") userId: String
+    ): List<Order>
+
+    // POST request to create order
+    @POST("/orders")
+    suspend fun createOrder(
+        @Header("Authorization") token: String,
+        @Body order: Order
+    ): Order
+
+    // PATCH request to update order status
+    @PATCH("/orders/{id}")
+    suspend fun updateOrderStatus(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body status: String
+    ): Order
+
+    // DELETE request to delete order
+    @DELETE("/orders/{id}")
+    suspend fun deleteOrder(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    )
 }
