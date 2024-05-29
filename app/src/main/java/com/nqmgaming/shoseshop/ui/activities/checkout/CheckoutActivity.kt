@@ -38,6 +38,11 @@ class CheckoutActivity : AppCompatActivity() {
         email = SharedPrefUtils.getString(this, "email") ?: ""
         phoneNumber = SharedPrefUtils.getString(this, "phoneNumber") ?: ""
         address = SharedPrefUtils.getString(this, "address") ?: ""
+        val total = intent.getStringExtra("total") ?: ""
+        val shippingFee = total.toDouble() * 0.1
+        binding.tvShippingFeeValue.text = "$ $shippingFee"
+        binding.tvTotalQuantityValue.text = "$ $total"
+        binding.tvTotalValue.text = "$ ${total.toDouble() + shippingFee}"
         binding.apply {
             emailTv.text = email
             phoneTv.text = phoneNumber

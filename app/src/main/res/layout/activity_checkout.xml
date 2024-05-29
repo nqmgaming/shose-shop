@@ -160,6 +160,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/phone_iv">
@@ -169,7 +171,6 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:background="@color/colorWhite"
-            android:elevation="4dp"
             android:padding="16dp">
 
             <TextView
@@ -196,7 +197,7 @@
                 android:id="@+id/tvShippingFee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shipping Fee"
+                android:text="Shipping Fee:"
                 android:textColor="@color/colorGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -215,7 +216,7 @@
                 android:id="@+id/tvTotalQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Quantity"
+                android:text="Price:"
                 android:textColor="@color/colorGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +236,7 @@
                 android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total"
+                android:text="Total:"
                 android:textColor="@color/colorGrey"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"

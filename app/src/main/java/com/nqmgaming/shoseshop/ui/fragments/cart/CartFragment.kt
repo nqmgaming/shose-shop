@@ -24,7 +24,7 @@ class CartFragment : Fragment() {
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<CartViewModel>()
-    private lateinit var categoryId: String
+    private lateinit var total: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,8 +40,15 @@ class CartFragment : Fragment() {
         val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
 
         binding.paymentBtn.setOnClickListener {
-            Intent(requireContext(), CheckoutActivity::class.java).apply {
-                startActivity(this)
+            Log.d("CartFragment", "onViewCreated: $total")
+            if (total.toDouble() > 0) {
+                Intent(requireContext(), CheckoutActivity::class.java).also {
+                    it.putExtra("token", bearerToken)
+                    it.putExtra("total", total)
+                    startActivity(it)
+                }
+            } else {
+                Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -53,6 +60,7 @@ class CartFragment : Fragment() {
                     setOnMinusClickListener { handleQuantityChange(it, bearerToken, userId, -1) }
                     setOnPlusClickListener { handleQuantityChange(it, bearerToken, userId, 1) }
                     setOnDeleteListener { handleItemDeletion(it, bearerToken, userId) }
+                    total = "${carts.sumOf { cart -> cart.items.price * cart.items.quantity }}"
                 }
                 updateUI(carts)
             }
@@ -105,6 +113,7 @@ class CartFragment : Fragment() {
         binding.cartRv.visibility = if (isEmpty) View.GONE else View.VISIBLE
         binding.totalPriceTv.text =
             "$: ${carts.sumOf { cart -> cart.items.price * cart.items.quantity }}"
+        total = "${carts.sumOf { cart -> cart.items.price * cart.items.quantity }}"
     }
 
     override fun onDestroy() {
