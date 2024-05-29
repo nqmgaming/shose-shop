@@ -28,10 +28,9 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
                     }
                 }
                 categoryItem.setOnClickListener {
-                    val previousSelectedPosition = selectedPosition
+                    onItemClickListener?.let { it(category) }
                     selectedPosition = adapterPosition
-                    notifyItemChanged(previousSelectedPosition)
-                    notifyItemChanged(selectedPosition)
+                    notifyDataSetChanged()
                 }
             }
 

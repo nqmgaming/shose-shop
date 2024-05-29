@@ -20,7 +20,11 @@ class HomeViewModel @Inject constructor(
 
     private suspend fun getCategoryById(token: String, id: String) =
         repository.getCategoryById(token, id)
+
     private suspend fun getProducts(token: String) = repository.getProducts(token)
+
+    private suspend fun getProductByCategory(token: String, categoryId: String) =
+        repository.getProductsByCategory(token, categoryId)
 
     fun getCategoriesHome(token: String, callback: (List<Category>?) -> Unit) {
         viewModelScope.launch {
@@ -42,6 +46,22 @@ class HomeViewModel @Inject constructor(
                 callback(products)
             } catch (e: Exception) {
                 Log.e("HomeViewModel", "Error getting products: ${e.message}")
+                callback(null)
+            }
+        }
+    }
+
+    fun getProductsByCategoryHome(
+        token: String,
+        categoryId: String,
+        callback: (List<Product>?) -> Unit
+    ) {
+        viewModelScope.launch {
+            try {
+                val products = getProductByCategory(token, categoryId)
+                callback(products)
+            } catch (e: Exception) {
+                Log.e("HomeViewModel", "Error getting products by category: ${e.message}")
                 callback(null)
             }
         }

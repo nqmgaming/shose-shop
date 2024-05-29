@@ -30,6 +30,7 @@ class CartAdapter(private val viewModel: CartViewModel, private val token: Strin
                         tvProductTotalPrice.text = "Total price: ${it.price * cart.items.quantity}"
                     }
                     productStock = it.stock
+
                 }
 
             }
