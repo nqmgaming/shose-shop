@@ -40,12 +40,15 @@ class CartFragment : Fragment() {
         val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
 
         binding.paymentBtn.setOnClickListener {
-            Log.d("CartFragment", "onViewCreated: $total")
-            if (total.toDouble() > 0) {
-                Intent(requireContext(), CheckoutActivity::class.java).also {
-                    it.putExtra("token", bearerToken)
-                    it.putExtra("total", total)
-                    startActivity(it)
+            if (::total.isInitialized) {
+                if (total.toDouble() > 0) {
+                    Intent(requireContext(), CheckoutActivity::class.java).also {
+                        it.putExtra("token", bearerToken)
+                        it.putExtra("total", total)
+                        startActivity(it)
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(requireContext(), "Cart is empty", Toast.LENGTH_SHORT).show()

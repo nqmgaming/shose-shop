@@ -53,9 +53,11 @@ class OrderActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val date = LocalDate.parse(LocalDate.now().toString(), formatter)
 
-       binding.rdCc.setOnCheckedChangeListener { _, isChecked ->
+        binding.rdCash.isChecked = true
+
+        binding.rdCc.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                paymentMethod = "Credit Card"
+                paymentMethod = "CC"
                 binding.rdCash.isChecked = false
                 binding.rdPaypal.isChecked = false
             }
