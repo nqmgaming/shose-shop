@@ -53,27 +53,28 @@ class OrderActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         val date = LocalDate.parse(LocalDate.now().toString(), formatter)
 
-        binding.rdCash.isChecked = true
-
-        binding.cardCash.setOnClickListener {
-            paymentMethod = "Cash"
-            binding.rdCash.isChecked = true
-            binding.rdCc.isChecked = false
-            binding.rdPaypal.isChecked = false
+       binding.rdCc.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                paymentMethod = "Credit Card"
+                binding.rdCash.isChecked = false
+                binding.rdPaypal.isChecked = false
+            }
         }
 
-        binding.cardCredit.setOnClickListener {
-            paymentMethod = "CC"
-            binding.rdCash.isChecked = false
-            binding.rdCc.isChecked = true
-            binding.rdPaypal.isChecked = false
+        binding.rdCash.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                paymentMethod = "Cash"
+                binding.rdCc.isChecked = false
+                binding.rdPaypal.isChecked = false
+            }
         }
 
-        binding.cardPaypal.setOnClickListener {
-            paymentMethod = "Paypal"
-            binding.rdCash.isChecked = false
-            binding.rdCc.isChecked = false
-            binding.rdPaypal.isChecked = true
+        binding.rdPaypal.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                paymentMethod = "Paypal"
+                binding.rdCash.isChecked = false
+                binding.rdCc.isChecked = false
+            }
         }
 
         binding.btnNext.setOnClickListener {
