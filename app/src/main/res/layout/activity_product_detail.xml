@@ -95,30 +95,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/share_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/button_detail_background"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_share"
-                    app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
-                    app:layout_constraintEnd_toStartOf="@+id/heart_iv"
-                    app:layout_constraintTop_toTopOf="@+id/heart_iv" />
-
-                <ImageView
-                    android:id="@+id/heart_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/button_detail_background"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_heart"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
