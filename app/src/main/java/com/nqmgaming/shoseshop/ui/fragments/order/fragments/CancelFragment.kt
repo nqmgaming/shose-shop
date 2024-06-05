@@ -5,16 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.nqmgaming.shoseshop.R
+import com.nqmgaming.shoseshop.adapter.order.OrderTotalAdapter
 import com.nqmgaming.shoseshop.databinding.FragmentCancelBinding
+import com.nqmgaming.shoseshop.ui.fragments.cart.CartViewModel
+import com.nqmgaming.shoseshop.ui.fragments.order.OrderViewModel
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
 
+@AndroidEntryPoint
 class CancelFragment : Fragment() {
     private var param1: String? = null
     private var _binding: FragmentCancelBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<OrderViewModel>()
+    private val cartViewModel by viewModels<CartViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -32,10 +40,28 @@ class CancelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
         val bearerToken = "Bearer $token"
-        val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
-        binding.cancel.text = param1
+
+        viewModel.getOrders("Canceled") { orders ->
+            if (orders.isEmpty()) {
+                binding.emptyOrderLayout.visibility = View.VISIBLE
+                binding.orderRecyclerView.visibility = View.GONE
+            } else {
+                binding.emptyOrderLayout.visibility = View.GONE
+                binding.orderRecyclerView.visibility = View.VISIBLE
+                binding.orderRecyclerView.setHasFixedSize(true)
+                binding.orderRecyclerView.adapter = OrderTotalAdapter(
+                    viewModel = cartViewModel,
+                    token = bearerToken
+                ).apply {
+                    differ.submitList(orders.reversed())
+
+                }
+            }
+        }
+
     }
 
     companion object {
@@ -47,5 +73,10 @@ class CancelFragment : Fragment() {
 
                 }
             }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

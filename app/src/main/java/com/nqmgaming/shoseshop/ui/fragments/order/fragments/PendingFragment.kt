@@ -1,17 +1,31 @@
 package com.nqmgaming.shoseshop.ui.fragments.order.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.nqmgaming.shoseshop.R
+import com.nqmgaming.shoseshop.adapter.order.OrderTotalAdapter
+import com.nqmgaming.shoseshop.databinding.FragmentPendingBinding
+import com.nqmgaming.shoseshop.ui.fragments.cart.CartViewModel
+import com.nqmgaming.shoseshop.ui.fragments.order.OrderViewModel
+import com.nqmgaming.shoseshop.util.SharedPrefUtils
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
 
+@AndroidEntryPoint
 class PendingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
+
+    private var _binding: FragmentPendingBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel by viewModels<OrderViewModel>()
+    private val cartViewModel by viewModels<CartViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +38,35 @@ class PendingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pending, container, false)
+        _binding = FragmentPendingBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
+        val bearerToken = "Bearer $token"
+        val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
+
+        viewModel.getOrders("Pending") { orders ->
+            Log.d("PendingFragment", "onViewCreated: $orders")
+            if (orders.isEmpty()) {
+                binding.emptyOrderLayout.visibility = View.VISIBLE
+                binding.orderRecyclerView.visibility = View.GONE
+            } else {
+                binding.emptyOrderLayout.visibility = View.GONE
+                binding.orderRecyclerView.visibility = View.VISIBLE
+                binding.orderRecyclerView.setHasFixedSize(true)
+                binding.orderRecyclerView.adapter = OrderTotalAdapter(
+                    viewModel = cartViewModel,
+                    token = bearerToken
+                ).apply {
+                    differ.submitList(orders.reversed())
+
+                }
+            }
+        }
+
     }
 
     companion object {
@@ -40,5 +77,10 @@ class PendingFragment : Fragment() {
                     putString(ARG_PARAM1, param1)
                 }
             }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
