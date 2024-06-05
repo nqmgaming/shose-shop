@@ -5,17 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.nqmgaming.shoseshop.databinding.FragmentShipBinding
-import com.nqmgaming.shoseshop.util.SharedPrefUtils
+import com.nqmgaming.shoseshop.R
 
 private const val ARG_PARAM1 = "param1"
 
-
-class ShipFragment : Fragment() {
-
+class PendingFragment : Fragment() {
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
-    private var _binding: FragmentShipBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +24,18 @@ class ShipFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentShipBinding.inflate(inflater, container, false)
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_pending, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
-        val bearerToken = "Bearer $token"
-        val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
-        binding.ship.text = param1
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(param1: String) =
-            ShipFragment().apply {
+            PendingFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                 }

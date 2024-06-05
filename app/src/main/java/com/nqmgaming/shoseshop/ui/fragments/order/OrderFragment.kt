@@ -1,15 +1,12 @@
 package com.nqmgaming.shoseshop.ui.fragments.order
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.viewpagger2.OrderAdapter
 import com.nqmgaming.shoseshop.databinding.FragmentOrderBinding
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
@@ -45,16 +42,25 @@ class OrderFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewpager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Shipped"
+                    tab.text = "Pending"
                 }
 
                 1 -> {
-                    tab.text = "On Progress"
+                    tab.text = "Progress"
                 }
 
                 2 -> {
-                    tab.text = "Cancel"
+                    tab.text = "Shipping"
                 }
+
+                3 -> {
+                    tab.text = "Delivered"
+                }
+
+                4 -> {
+                    tab.text = "Cancelled"
+                }
+
             }
         }.attach()
     }

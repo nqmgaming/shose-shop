@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.databinding.FragmentProgressBinding
+import com.nqmgaming.shoseshop.util.SharedPrefUtils
 
 private const val ARG_PARAM1 = "param1"
 
@@ -32,6 +33,9 @@ class ProgressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
+        val bearerToken = "Bearer $token"
+        val userId = SharedPrefUtils.getString(requireContext(), "id", "") ?: ""
         binding.progress.text = param1
     }
     companion object {
