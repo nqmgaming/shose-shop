@@ -9,13 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.cart.CartAdapter
 import com.nqmgaming.shoseshop.data.model.cart.Cart
-import com.nqmgaming.shoseshop.data.model.product.Product
 import com.nqmgaming.shoseshop.databinding.FragmentCartBinding
 import com.nqmgaming.shoseshop.ui.activities.checkout.CheckoutActivity
-import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
+import com.nqmgaming.shoseshop.ui.activities.product_detail.ProductDetailActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import dagger.hilt.android.AndroidEntryPoint
 

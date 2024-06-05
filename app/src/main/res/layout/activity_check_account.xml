@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.checkAccount.CheckAccountActivity">
+    tools:context=".ui.activities.check_account.CheckAccountActivity">
 
     <LinearLayout
         android:id="@+id/image_ll"

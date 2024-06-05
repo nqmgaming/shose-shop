@@ -106,6 +106,18 @@ class OrderActivity : AppCompatActivity() {
                     viewModel.createOrderOrder(token, order) { isOrderCreated ->
                         if (isOrderCreated) {
                             // Order created successfully
+                            // Update the stock for each product in the cart
+                            carts.forEach { cart ->
+                                viewModel.getProductStockOrder(token, cart.items.product) { stock ->
+                                    val newStock = stock - cart.items.quantity
+                                    val map = mapOf("stock" to newStock)
+                                    viewModel.updateProductStockOrder(token, cart.items.product, map) { isStockUpdated ->
+                                        if (!isStockUpdated) {
+                                            Log.e("OrderActivity", "Error updating stock for product: ${cart.items.product}")
+                                        }
+                                    }
+                                }
+                            }
                             // Clear the cart
                             viewModel.deleteAllCartOrder(token, userId) { done ->
                                 if (done) {

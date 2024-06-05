@@ -27,16 +27,16 @@
             android:name=".ui.activities.checkout.CheckoutActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.productDetail.ProductDetailActivity"
+            android:name=".ui.activities.product_detail.ProductDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.signUp.SignUpActivity"
+            android:name=".ui.activities.sign_up.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.signIn.SignInActivity"
+            android:name=".ui.activities.sign_in.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.checkAccount.CheckAccountActivity"
+            android:name=".ui.activities.check_account.CheckAccountActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.auth.AuthActivity"

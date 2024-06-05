@@ -15,7 +15,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
         fun bind(product: Product) {
             binding.apply {
                 shoeName.text = product.name
-                shoePrice.text = product.price.toString()
+                shoePrice.text = "$${product.price}"
                 shoeCategory.text = product.category.name
 
             }

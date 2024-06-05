@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.ui.activities.signUp
+package com.nqmgaming.shoseshop.ui.activities.sign_up
 
 import android.app.DatePickerDialog
 import android.app.Dialog

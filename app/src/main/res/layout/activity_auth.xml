@@ -53,10 +53,12 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/black_button"
+            android:backgroundTint="@null"
             android:text="@string/join_us"
             android:textAllCaps="false"
-            android:backgroundTint="@null"
             android:textColor="@color/colorWhite"
+            android:textSize="19sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/text_tv"
             app:layout_constraintTop_toBottomOf="@+id/text_tv" />
 
@@ -68,7 +70,9 @@
             android:background="@drawable/white_button"
             android:text="@string/sign_in"
             android:textAllCaps="false"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorWhite"
+            android:textSize="19sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/join_us_btn"
             app:layout_constraintTop_toTopOf="@+id/join_us_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>

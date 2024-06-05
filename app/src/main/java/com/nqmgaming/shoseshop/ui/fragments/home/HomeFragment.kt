@@ -2,7 +2,6 @@ package com.nqmgaming.shoseshop.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,7 @@ import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.BannerAdapter
 import com.nqmgaming.shoseshop.data.model.category.Category
 import com.nqmgaming.shoseshop.databinding.FragmentHomeBinding
-import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
+import com.nqmgaming.shoseshop.ui.activities.product_detail.ProductDetailActivity
 import com.nqmgaming.shoseshop.ui.activities.search.SearchActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import dagger.hilt.android.AndroidEntryPoint

@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.search.SearchAdapter
 import com.nqmgaming.shoseshop.databinding.ActivitySearchBinding
-import com.nqmgaming.shoseshop.ui.activities.productDetail.ProductDetailActivity
+import com.nqmgaming.shoseshop.ui.activities.product_detail.ProductDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

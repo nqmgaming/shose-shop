@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.databinding.ActivityAuthBinding
-import com.nqmgaming.shoseshop.ui.activities.checkAccount.CheckAccountActivity
+import com.nqmgaming.shoseshop.ui.activities.check_account.CheckAccountActivity
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding

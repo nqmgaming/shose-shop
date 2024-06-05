@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.ui.activities.checkAccount
+package com.nqmgaming.shoseshop.ui.activities.check_account
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.databinding.ActivityCheckAccountBinding
-import com.nqmgaming.shoseshop.ui.activities.signIn.SignInActivity
-import com.nqmgaming.shoseshop.ui.activities.signUp.SignUpActivity
+import com.nqmgaming.shoseshop.ui.activities.sign_in.SignInActivity
+import com.nqmgaming.shoseshop.ui.activities.sign_up.SignUpActivity
 import com.nqmgaming.shoseshop.ui.activities.splash.SplashViewModel
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validEmail
 import dagger.hilt.android.AndroidEntryPoint

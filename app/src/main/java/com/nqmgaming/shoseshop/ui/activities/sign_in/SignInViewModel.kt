@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.ui.activities.signIn
+package com.nqmgaming.shoseshop.ui.activities.sign_in
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

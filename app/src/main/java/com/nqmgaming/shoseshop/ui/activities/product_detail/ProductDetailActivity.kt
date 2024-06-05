@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.ui.activities.productDetail
+package com.nqmgaming.shoseshop.ui.activities.product_detail
 
 import android.app.Dialog
 import android.content.Intent

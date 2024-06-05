@@ -27,8 +27,8 @@ class ShoesRepository @Inject constructor(
     suspend fun getProductsByCategory(token: String, categoryId: String) =
         shoesApi.getProductsByCategoryId(token, categoryId)
 
-    suspend fun updateProductStock(token: String, id: String, stock: Int) =
-        shoesApi.updateProductStock(token, id, stock)
+    suspend fun updateProductStock(token: String, id: String, map: Map<String, Int>) =
+        shoesApi.updateProductStock(token, id, map)
 
     suspend fun getAllCarts(token: String, userId: String): CartResponse =
         shoesApi.getCartItemsByUserId(token, userId)

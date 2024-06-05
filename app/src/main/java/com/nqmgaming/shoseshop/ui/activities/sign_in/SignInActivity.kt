@@ -1,9 +1,8 @@
-package com.nqmgaming.shoseshop.ui.activities.signIn
+package com.nqmgaming.shoseshop.ui.activities.sign_in
 
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -11,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
-import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
 import com.nqmgaming.shoseshop.databinding.ActivitySignInBinding
 import com.nqmgaming.shoseshop.ui.activities.MainActivity
 import com.nqmgaming.shoseshop.util.SharedPrefUtils

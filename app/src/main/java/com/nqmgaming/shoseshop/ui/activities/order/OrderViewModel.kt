@@ -16,6 +16,12 @@ class OrderViewModel @Inject constructor(
     private suspend fun createOrder(token: String, order: Order) =
         shoesRepository.createOrder(token, order)
 
+    private suspend fun getProductStock(token: String, id: String) =
+        shoesRepository.getProductById(token, id).stock
+
+    private suspend fun updateProductStock(token: String, id: String, map: Map<String, Int>) =
+        shoesRepository.updateProductStock(token, id, map)
+
     private suspend fun deleteAllCart(token: String, userId: String) =
         shoesRepository.deleteAllCart(token, userId)
 
@@ -26,6 +32,35 @@ class OrderViewModel @Inject constructor(
                 callback(true)
             } catch (e: Exception) {
                 Log.e("OrderViewModel", "Error creating order: ${e.message}")
+                callback(false)
+            }
+        }
+    }
+
+    fun getProductStockOrder(token: String, id: String, callback: (Int) -> Unit) {
+        viewModelScope.launch {
+            try {
+                val stock = getProductStock(token, id)
+                callback(stock)
+            } catch (e: Exception) {
+                Log.e("OrderViewModel", "Error getting product stock: ${e.message}")
+                callback(0)
+            }
+        }
+    }
+
+    fun updateProductStockOrder(
+        token: String,
+        id: String,
+        stock: Map<String, Int>,
+        callback: (Boolean) -> Unit
+    ) {
+        viewModelScope.launch {
+            try {
+                val isStockUpdated = updateProductStock(token, id, stock)
+                callback(true)
+            } catch (e: Exception) {
+                Log.e("OrderViewModel", "Error updating product stock: ${e.message}")
                 callback(false)
             }
         }

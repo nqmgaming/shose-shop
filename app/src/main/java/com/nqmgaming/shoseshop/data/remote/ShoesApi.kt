@@ -88,7 +88,7 @@ interface ShoesApi {
     suspend fun updateProductStock(
         @Header("Authorization") token: String,
         @Path("id") id: String,
-        @Body stock: Int
+        @Body map: Map<String, Int> // map of stock
     ): Product
 
     /***
