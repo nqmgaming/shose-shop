@@ -44,7 +44,7 @@ class CancelFragment : Fragment() {
         val token = SharedPrefUtils.getString(requireContext(), "accessToken", "") ?: ""
         val bearerToken = "Bearer $token"
 
-        viewModel.getOrders("Canceled") { orders ->
+        viewModel.getOrders("Cancelled") { orders ->
             if (orders.isEmpty()) {
                 binding.emptyOrderLayout.visibility = View.VISIBLE
                 binding.orderRecyclerView.visibility = View.GONE
