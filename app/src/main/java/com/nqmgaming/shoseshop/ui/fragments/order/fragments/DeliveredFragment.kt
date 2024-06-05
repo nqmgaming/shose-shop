@@ -1,14 +1,15 @@
 package com.nqmgaming.shoseshop.ui.fragments.order.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.order.OrderTotalAdapter
 import com.nqmgaming.shoseshop.databinding.FragmentDeliveredBinding
+import com.nqmgaming.shoseshop.ui.activities.order_detail.OrderDetailActivity
 import com.nqmgaming.shoseshop.ui.fragments.cart.CartViewModel
 import com.nqmgaming.shoseshop.ui.fragments.order.OrderViewModel
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
@@ -60,8 +61,11 @@ class DeliveredFragment : Fragment() {
                     token = bearerToken
                 ).apply {
                     differ.submitList(orders.reversed())
-
-                }
+                    setOnItemClickListener {
+                        val intent = Intent(requireContext(), OrderDetailActivity::class.java)
+                        intent.putExtra("orderId", it.id)
+                        startActivity(intent)
+                    }                }
             }
         }
     }
