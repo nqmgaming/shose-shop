@@ -87,7 +87,7 @@ class ProductDetailActivity : AppCompatActivity() {
                                 .setStyle(Styles.SUCCESS)
                                 .setHeading("Add to bag success!")
                                 .setDescription("Continue purchase")
-                                .setDismissButtonText("Close")
+                                .setDismissButtonText("Ok")
                                 .setCancelable(false)
                                 .showDialog(object : OnDialogButtonClickListener() {
                                     override fun onDismissClicked(dialog: Dialog) {
@@ -100,7 +100,7 @@ class ProductDetailActivity : AppCompatActivity() {
                                 .setStyle(Styles.FAILED)
                                 .setHeading("Add to bag failed!")
                                 .setDescription("Product is already in the cart")
-                                .setDismissButtonText("Close")
+                                .setDismissButtonText("Ok")
                                 .setCancelable(false)
                                 .showDialog(object : OnDialogButtonClickListener() {
                                     override fun onDismissClicked(dialog: Dialog) {

@@ -88,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="16dp"
-                    android:text="$ 170"
                     android:textColor="@color/colorBlack"
                     android:textSize="40sp"
                     android:textStyle="bold"
@@ -108,7 +107,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Product name"
                     android:textColor="@color/static_black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -127,7 +125,6 @@
                         android:layout_gravity="start"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
-                        android:text="Product category"
                         android:textAlignment="textStart"
                         android:textColor="@color/colorGrey"
                         android:textSize="20sp"
@@ -138,10 +135,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginEnd="5dp"
+                        android:paddingEnd="15dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
-                        android:text="Stock: 15"
                         android:textAlignment="textEnd"
                         android:textColor="@color/colorGrey"
                         android:textSize="20sp"
@@ -153,9 +149,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. With an iconic design that pairs perfectly with any 'fit, these kicks ensure you'll always be on point."
                     android:textColor="@color/static_black"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <Button
@@ -168,8 +163,9 @@
                 android:drawableEnd="@drawable/ic_arrow_down"
                 android:paddingHorizontal="16dp"
                 android:text="Size EU 42.5"
+                android:textStyle="bold"
                 android:textAllCaps="false"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
             <Button
@@ -178,7 +174,7 @@
                 android:layout_height="55dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/black_button"
+                android:background="@drawable/white_button"
                 android:paddingHorizontal="16dp"
                 android:text="Add to Bag"
                 android:textAllCaps="false"
@@ -233,7 +229,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="4.9"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </com.willy.ratingbar.ScaleRatingBar>

@@ -56,7 +56,7 @@
             android:layout_marginHorizontal="5dp"
             android:gravity="start"
             android:paddingBottom="8dp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorOrange"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
