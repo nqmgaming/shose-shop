@@ -33,7 +33,7 @@ class OrderItemAdapter(
                 binding.tvCategoryItemOrder.text = product.category.name
                 val formattedPrice =
                     NumberFormat.getNumberInstance(Locale.US).format(product.price.toInt())
-                binding.tvPriceItemOrder.text = "Price: ${formattedPrice}"
+                binding.tvPriceItemOrder.text = "Price: ${formattedPrice} $"
 
             }
         }

@@ -145,6 +145,10 @@ class ProductDetailActivity : AppCompatActivity() {
                     price = it.price
                     productImage = it.imagePreview
                     categoryId = it.category.id
+                    if (it.stock <= 0) {
+                        binding.addToBagBtn.isEnabled = false
+                        binding.addToBagBtn.text = "Out of stock"
+                    }
                 }
                 viewModel.getProductsByCategory(token, categoryId) {
                     if (it != null) {

@@ -28,7 +28,7 @@ class OrderTotalAdapter(
                 binding.tvDay.text = formattedDate
                 val formattedPrice =
                     NumberFormat.getNumberInstance(Locale.US).format(order.total.toInt())
-                binding.tvTotalPrice.text = formattedPrice
+                binding.tvTotalPrice.text = formattedPrice + " $"
                 binding.itemOrderRecyclerView.setHasFixedSize(true)
                 binding.itemOrderRecyclerView.adapter = OrderItemAdapter(
                     viewModel,
