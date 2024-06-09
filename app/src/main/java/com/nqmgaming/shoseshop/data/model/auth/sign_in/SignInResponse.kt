@@ -1,12 +1,12 @@
-package com.nqmgaming.shoseshop.data.model.signUp
+package com.nqmgaming.shoseshop.data.model.auth.sign_in
 
 import com.google.gson.annotations.SerializedName
 
-data class UserSignUp(
+data class UserSignIn(
     @SerializedName("_id")
     val id: String,
     val email: String,
-    val password: String,
+    val avatar: String,
     val firstName: String,
     val lastName: String,
     val birthDate: String,
@@ -14,7 +14,7 @@ data class UserSignUp(
     val phoneNumber: String
 )
 
-data class SignUpResponse(
-    val data: UserSignUp,
+data class SignInResponse(
+    val data: UserSignIn,
     val accessToken: String
 )

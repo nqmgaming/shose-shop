@@ -3,9 +3,9 @@ package com.nqmgaming.shoseshop.ui.fragments.home
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nqmgaming.shoseshop.data.model.category.Category
-import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
-import com.nqmgaming.shoseshop.data.model.product.Product
+import com.nqmgaming.shoseshop.data.model.main.category.Category
+import com.nqmgaming.shoseshop.data.model.main.category.CategoryResponse
+import com.nqmgaming.shoseshop.data.model.main.product.Product
 import com.nqmgaming.shoseshop.data.repository.ShoesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

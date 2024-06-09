@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.data.model.category
+package com.nqmgaming.shoseshop.data.model.main.category
 
 import com.google.gson.annotations.SerializedName
 

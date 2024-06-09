@@ -50,6 +50,7 @@ class SignInActivity : AppCompatActivity() {
                         SharedPrefUtils.saveString(this, "email", response.data.email)
                         SharedPrefUtils.saveString(this, "firstName", response.data.firstName)
                         SharedPrefUtils.saveString(this, "lastName", response.data.lastName)
+                        SharedPrefUtils.saveString(this, "avatar", response.data.avatar)
                         SharedPrefUtils.saveString(this, "birthDate", response.data.birthDate)
                         SharedPrefUtils.saveString(this, "address", response.data.address)
                         SharedPrefUtils.saveString(this, "phoneNumber", response.data.phoneNumber)

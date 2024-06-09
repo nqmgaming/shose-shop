@@ -1,12 +1,15 @@
 package com.nqmgaming.shoseshop.data.repository
 
-import com.nqmgaming.shoseshop.data.model.cart.CartRequest
-import com.nqmgaming.shoseshop.data.model.cart.CartResponse
-import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
-import com.nqmgaming.shoseshop.data.model.order.Order
-import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
-import com.nqmgaming.shoseshop.data.model.signUp.SignUpRequest
+import com.nqmgaming.shoseshop.data.model.main.cart.CartRequest
+import com.nqmgaming.shoseshop.data.model.main.cart.CartResponse
+import com.nqmgaming.shoseshop.data.model.main.category.CategoryResponse
+import com.nqmgaming.shoseshop.data.model.main.order.Order
+import com.nqmgaming.shoseshop.data.model.auth.sign_in.SignInRequest
+import com.nqmgaming.shoseshop.data.model.auth.sign_up.SignUpRequest
+import com.nqmgaming.shoseshop.data.model.main.user.User
 import com.nqmgaming.shoseshop.data.remote.ShoesApi
+import okhttp3.MultipartBody
+import retrofit2.Response
 import javax.inject.Inject
 
 class ShoesRepository @Inject constructor(
@@ -48,4 +51,12 @@ class ShoesRepository @Inject constructor(
     suspend fun createOrder(token: String, order: Order) = shoesApi.createOrder(token, order)
 
     suspend fun getOrders(token: String, userId: String) = shoesApi.getOrdersByUserId(token, userId)
+    suspend fun getOrderById(token: String, id: String) = shoesApi.getOrder(token, id)
+
+    suspend fun updateUserImageProfile(
+        token: String,
+        userId: String,
+        image: MultipartBody.Part
+    ): Response<User> =
+        shoesApi.updateAvatar(token, userId, image)
 }

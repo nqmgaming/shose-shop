@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.data.model.size
+package com.nqmgaming.shoseshop.data.model.main.size
 
 import com.google.gson.annotations.SerializedName
 

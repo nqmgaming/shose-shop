@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.data.model.signUp
+package com.nqmgaming.shoseshop.data.model.auth.sign_up
 
 data class SignUpRequest (
     val email: String,

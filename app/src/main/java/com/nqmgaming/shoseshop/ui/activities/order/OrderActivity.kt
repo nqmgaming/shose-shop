@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
-import com.nqmgaming.shoseshop.data.model.order.Order
-import com.nqmgaming.shoseshop.data.model.order.OrderProduct
+import com.nqmgaming.shoseshop.data.model.main.order.Order
+import com.nqmgaming.shoseshop.data.model.main.order.OrderProduct
 import com.nqmgaming.shoseshop.databinding.ActivityOrderBinding
 import com.nqmgaming.shoseshop.ui.activities.MainActivity
 import com.nqmgaming.shoseshop.ui.fragments.cart.CartViewModel

@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.data.model.order
+package com.nqmgaming.shoseshop.data.model.main.order
 
 import com.google.gson.annotations.SerializedName
 

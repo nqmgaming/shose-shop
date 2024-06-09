@@ -13,7 +13,7 @@ import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.category.CategoryAdapter
 import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.BannerAdapter
-import com.nqmgaming.shoseshop.data.model.category.Category
+import com.nqmgaming.shoseshop.data.model.main.category.Category
 import com.nqmgaming.shoseshop.databinding.FragmentHomeBinding
 import com.nqmgaming.shoseshop.ui.activities.product_detail.ProductDetailActivity
 import com.nqmgaming.shoseshop.ui.activities.search.SearchActivity

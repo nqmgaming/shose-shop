@@ -3,9 +3,9 @@ package com.nqmgaming.shoseshop.ui.activities.product_detail
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nqmgaming.shoseshop.data.model.cart.Cart
-import com.nqmgaming.shoseshop.data.model.cart.CartRequest
-import com.nqmgaming.shoseshop.data.model.product.Product
+import com.nqmgaming.shoseshop.data.model.main.cart.Cart
+import com.nqmgaming.shoseshop.data.model.main.cart.CartRequest
+import com.nqmgaming.shoseshop.data.model.main.product.Product
 import com.nqmgaming.shoseshop.data.repository.ShoesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

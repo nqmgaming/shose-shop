@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.nqmgaming.shoseshop.data.model.category.Category
+import com.nqmgaming.shoseshop.data.model.main.category.Category
 import com.nqmgaming.shoseshop.databinding.ItemCategoryBinding
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {

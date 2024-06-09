@@ -1,8 +1,8 @@
-package com.nqmgaming.shoseshop.data.model.product
+package com.nqmgaming.shoseshop.data.model.main.product
 
 import com.google.gson.annotations.SerializedName
-import com.nqmgaming.shoseshop.data.model.category.Category
-import com.nqmgaming.shoseshop.data.model.size.Size
+import com.nqmgaming.shoseshop.data.model.main.category.Category
+import com.nqmgaming.shoseshop.data.model.main.size.Size
 
 data class Product(
     @SerializedName("_id")

@@ -13,10 +13,10 @@ import com.maxkeppeler.sheets.input.type.InputRadioButtons
 import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.adapter.product.ProductAdapter
 import com.nqmgaming.shoseshop.adapter.viewpagger2.ImageProductAdapter
-import com.nqmgaming.shoseshop.data.model.cart.CartRequest
-import com.nqmgaming.shoseshop.data.model.cart.ItemCartRequest
-import com.nqmgaming.shoseshop.data.model.size.Size
-import com.nqmgaming.shoseshop.data.model.size.SizeDetail
+import com.nqmgaming.shoseshop.data.model.main.cart.CartRequest
+import com.nqmgaming.shoseshop.data.model.main.cart.ItemCartRequest
+import com.nqmgaming.shoseshop.data.model.main.size.Size
+import com.nqmgaming.shoseshop.data.model.main.size.SizeDetail
 import com.nqmgaming.shoseshop.databinding.ActivityProductDetailBinding
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import com.saadahmedsoft.popupdialog.PopupDialog

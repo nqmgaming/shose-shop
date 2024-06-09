@@ -1,6 +1,6 @@
-package com.nqmgaming.shoseshop.data.model.cart
+package com.nqmgaming.shoseshop.data.model.main.cart
 
-import com.nqmgaming.shoseshop.data.model.product.Product
+import com.nqmgaming.shoseshop.data.model.main.product.Product
 
 data class ItemCart(
     val product: String,

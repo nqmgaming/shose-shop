@@ -3,8 +3,8 @@ package com.nqmgaming.shoseshop.ui.activities.sign_in
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
-import com.nqmgaming.shoseshop.data.model.signIn.SignInResponse
+import com.nqmgaming.shoseshop.data.model.auth.sign_in.SignInRequest
+import com.nqmgaming.shoseshop.data.model.auth.sign_in.SignInResponse
 import com.nqmgaming.shoseshop.data.repository.ShoesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

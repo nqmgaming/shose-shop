@@ -1,21 +1,26 @@
 package com.nqmgaming.shoseshop.data.remote
 
-import com.nqmgaming.shoseshop.data.model.cart.Cart
-import com.nqmgaming.shoseshop.data.model.cart.CartRequest
-import com.nqmgaming.shoseshop.data.model.cart.CartResponse
-import com.nqmgaming.shoseshop.data.model.category.CategoryResponse
-import com.nqmgaming.shoseshop.data.model.order.Order
-import com.nqmgaming.shoseshop.data.model.product.Product
-import com.nqmgaming.shoseshop.data.model.signIn.SignInRequest
-import com.nqmgaming.shoseshop.data.model.signIn.SignInResponse
-import com.nqmgaming.shoseshop.data.model.signUp.SignUpRequest
-import com.nqmgaming.shoseshop.data.model.signUp.SignUpResponse
+import com.nqmgaming.shoseshop.data.model.main.cart.Cart
+import com.nqmgaming.shoseshop.data.model.main.cart.CartRequest
+import com.nqmgaming.shoseshop.data.model.main.cart.CartResponse
+import com.nqmgaming.shoseshop.data.model.main.category.CategoryResponse
+import com.nqmgaming.shoseshop.data.model.main.order.Order
+import com.nqmgaming.shoseshop.data.model.main.product.Product
+import com.nqmgaming.shoseshop.data.model.auth.sign_in.SignInRequest
+import com.nqmgaming.shoseshop.data.model.auth.sign_in.SignInResponse
+import com.nqmgaming.shoseshop.data.model.auth.sign_up.SignUpRequest
+import com.nqmgaming.shoseshop.data.model.auth.sign_up.SignUpResponse
+import com.nqmgaming.shoseshop.data.model.main.user.User
+import okhttp3.MultipartBody
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -142,6 +147,12 @@ interface ShoesApi {
         @Path("userId") userId: String
     ): List<Order>
 
+    @GET("/orders/{id}")
+    suspend fun getOrder(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Order
+
     // POST request to create order
     @POST("/orders")
     suspend fun createOrder(
@@ -163,4 +174,17 @@ interface ShoesApi {
         @Header("Authorization") token: String,
         @Path("id") id: String
     )
+
+    /**
+     * This part is for user
+     */
+
+    @Multipart
+    @PATCH("users/updateUser/{id}")
+    suspend fun updateAvatar(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Part avatar: MultipartBody.Part
+    ): Response<User>
+
 }
