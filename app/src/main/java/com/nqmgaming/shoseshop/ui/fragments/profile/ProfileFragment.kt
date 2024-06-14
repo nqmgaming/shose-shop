@@ -17,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.gun0912.tedpermission.coroutine.TedPermission
@@ -24,6 +25,7 @@ import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.data.model.main.user.User
 import com.nqmgaming.shoseshop.databinding.FragmentProfileBinding
 import com.nqmgaming.shoseshop.ui.activities.auth.AuthActivity
+import com.nqmgaming.shoseshop.ui.activities.Settings.SettingActivity
 import com.nqmgaming.shoseshop.util.RealPathUtil
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import com.saadahmedsoft.popupdialog.PopupDialog
@@ -106,6 +108,19 @@ class ProfileFragment : Fragment() {
                         }
                     }
                 })
+        }
+
+        binding.ordersCv.setOnClickListener{
+            findNavController().navigate(R.id.orderFragment)
+        }
+
+        binding.addressesCv.setOnClickListener{
+
+        }
+
+        binding.settingsCv.setOnClickListener{
+            val intent = Intent(requireContext(), SettingActivity::class.java)
+            startActivity(intent)
         }
     }
 

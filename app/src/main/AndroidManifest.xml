@@ -24,6 +24,12 @@
         tools:replace="android:label"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.TermOfUser.TermOfUser"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.Settings.SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.order_detail.OrderDetailActivity"
             android:exported="false" />
         <activity
@@ -51,10 +57,10 @@
             android:name=".ui.activities.auth.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name=".ui.activities.splash.SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.splash.SplashActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
