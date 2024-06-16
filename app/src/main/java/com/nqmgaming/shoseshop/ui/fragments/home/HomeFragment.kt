@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nqmgaming.shoseshop.R
@@ -68,7 +67,6 @@ class HomeFragment : Fragment() {
 
                     differ.submitList(allCategories + categories)
                     setOnItemClickListener { category ->
-                        Toast.makeText(requireContext(), category.name, Toast.LENGTH_SHORT).show()
                         categoryId = category.id
                         if (categoryId == "0") {
                             viewModel.getProductsHome(bearerToken) { products ->

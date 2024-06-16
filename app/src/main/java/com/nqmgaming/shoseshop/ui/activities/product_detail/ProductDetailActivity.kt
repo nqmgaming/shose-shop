@@ -87,7 +87,7 @@ class ProductDetailActivity : AppCompatActivity() {
                                 .setStyle(Styles.SUCCESS)
                                 .setHeading("Add to bag success!")
                                 .setDescription("Continue purchase")
-                                .setDismissButtonText("Close")
+                                .setDismissButtonText("Ok")
                                 .setCancelable(false)
                                 .showDialog(object : OnDialogButtonClickListener() {
                                     override fun onDismissClicked(dialog: Dialog) {
@@ -100,7 +100,7 @@ class ProductDetailActivity : AppCompatActivity() {
                                 .setStyle(Styles.FAILED)
                                 .setHeading("Add to bag failed!")
                                 .setDescription("Product is already in the cart")
-                                .setDismissButtonText("Close")
+                                .setDismissButtonText("Ok")
                                 .setCancelable(false)
                                 .showDialog(object : OnDialogButtonClickListener() {
                                     override fun onDismissClicked(dialog: Dialog) {
@@ -145,6 +145,10 @@ class ProductDetailActivity : AppCompatActivity() {
                     price = it.price
                     productImage = it.imagePreview
                     categoryId = it.category.id
+                    if (it.stock <= 0) {
+                        binding.addToBagBtn.isEnabled = false
+                        binding.addToBagBtn.text = "Out of stock"
+                    }
                 }
                 viewModel.getProductsByCategory(token, categoryId) {
                     if (it != null) {
