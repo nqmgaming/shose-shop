@@ -25,7 +25,7 @@ import com.nqmgaming.shoseshop.R
 import com.nqmgaming.shoseshop.data.model.main.user.User
 import com.nqmgaming.shoseshop.databinding.FragmentProfileBinding
 import com.nqmgaming.shoseshop.ui.activities.auth.AuthActivity
-import com.nqmgaming.shoseshop.ui.activities.Settings.SettingActivity
+import com.nqmgaming.shoseshop.ui.activities.settings.SettingActivity
 import com.nqmgaming.shoseshop.util.RealPathUtil
 import com.nqmgaming.shoseshop.util.SharedPrefUtils
 import com.saadahmedsoft.popupdialog.PopupDialog

@@ -24,10 +24,10 @@
         tools:replace="android:label"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activities.TermOfUser.TermOfUser"
+            android:name=".ui.activities.term_of_user.TermOfUserActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.Settings.SettingActivity"
+            android:name=".ui.activities.settings.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.order_detail.OrderDetailActivity"

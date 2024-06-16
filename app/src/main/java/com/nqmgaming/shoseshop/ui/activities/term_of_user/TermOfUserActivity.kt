@@ -1,4 +1,4 @@
-package com.nqmgaming.shoseshop.ui.activities.TermOfUser
+package com.nqmgaming.shoseshop.ui.activities.term_of_user
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,7 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.nqmgaming.shoseshop.R
 
-class TermOfUser : AppCompatActivity() {
+class TermOfUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
