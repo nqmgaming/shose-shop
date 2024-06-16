@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.0"
+agp = "8.4.2"
 avvylib = "1.2.0"
 dotsindicator = "5.0"
 evVersion = "1.0.4"
